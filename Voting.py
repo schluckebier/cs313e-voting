@@ -1,4 +1,4 @@
-import sys
+
 TotalCases = 0
 LineCounter = 1
 VoteNumber = 0
@@ -217,4 +217,4 @@ def voting_solve(r, w):
 		
 
 
-voting_solve(sys.stdin, sys.stdout)
+
