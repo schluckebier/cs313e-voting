@@ -50,9 +50,9 @@ def voting_read(s):
 	global TotalCases
 	global FirstVote
 	global AllVotes
-	global Flag
+
 	global CaseCount
-	global loop
+
 	prev = " "
 	CurrentLine = s.readline()
 	if CurrentLine == "":
@@ -92,7 +92,7 @@ def voting_read(s):
 			return(b)
 		
 	LineCounter += 1
-	loop +=1
+
 
 
 

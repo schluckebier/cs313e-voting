@@ -1,90 +1,103 @@
-import sys
+
+# -------
+# imports
+# -------
+
+from io       import StringIO
+from unittest import main, TestCase
+
+from Voting import firstnum, voting_eval, voting_print, voting_solve
+
+# -----------
+# TestVoting
+# -----------
+
+class TestVoting (TestCase) :
+    # ----
+    # read
+    # ----
+
+    def test_read (self) :
+        r    = StringIO("1\n\n4\nMouse\nDog\nCat\nMoose\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n")
+        i = firstnum(r)
+        self.assertEqual(i,  None)
 
 
-# ------------
-# voting_read
-# ------------
+    # -----
+    # print
+    # -----
 
-def voting_read (r) :
-    """
+    def test_print_1 (self) :
+        w = StringIO()
+        l = ['a', 'b', 'c']
+        voting_print(l, w)
+        self.assertEqual(w.getvalue(), 'a\nb\nc\n\n')
+        
+    def test_print_2 (self) :
+        w = StringIO()
+        l = ['one', 'two', 'three']
+        voting_print(l, w)
+        self.assertEqual(w.getvalue(), 'one\ntwo\nthree\n\n')
+        
+    def test_print_3 (self) :
+        w = StringIO()
+        l = ['Dallas Cowboys', 'Houston Texans', 'Buffalo Bills']
+        voting_print(l, w)
+        self.assertEqual(w.getvalue(), 'Dallas Cowboys\nHouston Texans\nBuffalo Bills\n\n')
+        
+    def test_print_4 (self) :
+        w = StringIO()
+        l = ['11', '12', '13']
+        voting_print(l, w)
+        self.assertEqual(w.getvalue(), '11\n12\n13\n\n')
+        
+    def test_print_5 (self) :
+    	w = StringIO()
+    	l = ['Dog', 'Cat', 'Moose']
+    	voting_print(l, w)
+    	self.assertEqual(w.getvalue(), 'Dog\nCat\nMoose\n\n')
+    	
+    def test_print_6 (self) :
+    	w = StringIO()
+    	l = 'Hello'
+    	voting_print(l, w)
+    	self.assertEqual(w.getvalue(), 'Hello\n\n')
+    	
+    def test_print_7 (self) :
+    	w = StringIO()
+    	l = 'Hello'
+    	voting_print(l, w)
+    	self.assertEqual(w.getvalue(), 'Hello\n\n')
+    	
+    def test_print_6 (self) :
+    	w = StringIO()
+    	l = 'Hello'
+    	voting_print(l, w)
+    	self.assertEqual(w.getvalue(), 'Hello\n\n')
+    	
+
     
-    """
-    s = r.readline()
-    return s
-    
-    
 
-# ------------
-# voting_eval
-# ------------
+    # -----
+    # solve
+    # -----
 
-"""
-def voting_eval (i, j) :
-    
-    i the beginning of the range, inclusive
-    j the end       of the range, inclusive
-    return the max cycle length of the range [i, j]
-    ________________________
-    A function is given a value.
-    If the value is new to the fuction it calculates its cycle length and stores it.
-    it it has seen the value it looks up the value (Cache)
-    This cycle length is compared to the current max cycle length to find the overall max.
+    def test_solve_1 (self) :
+        r = StringIO("1\n\n3\na\nb\nc\n1 2 3\n1 3 2\n3 1 2\n")
+        w = StringIO()
+        voting_solve(r, w)
+        self.assertEqual(w.getvalue(), '')
+
+    def test_solve_2 (self) :
+        r = StringIO("1\n\n4\nMouse\nDog\nCat\nMoose\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n1 2 3 4\n")
+        w = StringIO()
+        voting_solve(r, w)
+        self.assertEqual(w.getvalue(), '')
+        
     
 
+# ----
+# main
+# ----
 
-    if i > j:#switch values if j is smaller
-        i,j = j,i
-    assert i <= j
-    assert i>=0
-    assert j>=0
-    if j//2+1 > i:#use optimization which removes values less than half the larger value
-        i = j//2+1
-    MaxCycleLength=1
-    def CycleCounter(num):#fuction which finds cycle length and if its a new value adds the value and its cycle lenght to a dictionary. if its a value already stored in the dictionary, then cycle length is looked up rather than re calculated. 
-        TempNum=num
-        CycleLength = 1
-        while num > 1:
-            if num in CacheDic:
-                CycleLength += CacheDic[num]-1
-                num = 1
-            elif num % 2 == 0:
-                num =  num//2
-                CycleLength+= 1
-            else:
-                num = ((num*3)+1)//2
-                CycleLength+=2
-        CacheDic[TempNum]= CycleLength
-        return CycleLength
-
- 
-                      
-    
-    for x in range (i, j+1):#tests the cycle length against the max. if the value is bigger then it is the new max
-        tempcount = CycleCounter(x)
-        if tempcount>MaxCycleLength:
-            MaxCycleLength=tempcount
-
-    return MaxCycleLength#return max
-    assert MaxCycleLength >= 1
-
-"""
-# -------------
-# voting_print
-# -------------
-
-def voting_print (v, w) :
-    """
-    """
-    w.write(str(v) + "\n")
-
-# -------------
-# voting_solve
-# -------------
-
-def voting_solve (r, w) :
-    """
-    """
-    a = voting_read(r)
-    voting_print(a, w)
-	
-voting_solve(sys.stdin, sys.stdout)
+main()
