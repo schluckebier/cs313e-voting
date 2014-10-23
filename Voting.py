@@ -1,18 +1,38 @@
 import sys
-TotalNumber = 0
+TotalCases = 0
 LineCounter = 1
 VoteNumber = 0
 Candidates = []
 AllVotes = []
+
 Flag = True
 
 
-class Ballot
-	def __init__(self):
+
+class Ballot:
+	def __init__(self, baln, balid):
+		self.baln = baln
+		self.balid = balid
+			
+	
+			
+			
+	
+
+class Candidate:
+	def __init__(self, cann, canid):
+		self.cann = cann
+		self.canid = canid
+		self.ballist = []
+		
+	def totalvotes(self):
+		return len(self.ballist)
+		
+
+		
+
 	
 	
-class Candidate
-	def __init__(self):
 	
 
 
@@ -20,14 +40,14 @@ def voting_read(s):
 	global LineCounter
 	global Candidates
 	global VoteNumber
-	global TotalNumber
-	global FirstVote
+	global TotalCases
+	#global FirstVote
 	global AllVotes
-	global Flag
+	#global Flag
 	prev = " "
 	CurrentLine = s.readline()
 	if LineCounter == 1:
-		TotalNumber = int(CurrentLine)
+		TotalCases = int(CurrentLine)
 	elif LineCounter == 3:
 		VoteNumber = int(CurrentLine)
 	elif LineCounter >= 4 and LineCounter < 4 + VoteNumber:
@@ -45,15 +65,59 @@ def voting_read(s):
 	elif LineCounter >4 and CurrentLine == '\n':
 		voting_eval()
 		
-		
-
-	
-	
-	
 	LineCounter += 1
 
 def voting_eval():
-	x = 1
+
+	WinMark = len(AllVotes)/2
+	baldic = {}
+	b = iter(AllVotes)
+	for k in range (1, len(AllVotes)+1):
+		baldic[k] = next(b)
+		
+	Realbaldic = {}
+	for k in range (1, len(AllVotes)+1):
+		Realbaldic[k] = Ballot(baldic[k], k)
+	
+	
+	candic = {}
+	a = iter(Candidates)
+	for i in range (1, VoteNumber+1):
+		candic[i] = next(a)
+		
+	Realcandic = {}
+	for i in range (1, VoteNumber+1):
+		Realcandic[i] = Candidate(candic[i], i)
+		
+	for Balid in range (1, len(AllVotes)+1):
+		for Canid in range (1, VoteNumber+1):
+			if Realbaldic[Balid].baln[0] == Realcandic[Canid].canid:
+				Realcandic[Canid].ballist.append( Realbaldic[Balid])
+				
+	for i in range (1, len(Candidates)+1):
+		if Realcandic[i].totalvotes() > WinMark:
+			
+			print( Realcandic[i].cann)
+			
+			 
+		
+			
+	
+	
+	
+	
+		
+	
+		
+	
+	
+	
+		
+	
+	
+	
+		
+	
 	
 def voting_print(ans, w):
 	#w.write(ans)
@@ -71,4 +135,4 @@ def voting_solve(r, w):
 
 
 voting_solve(sys.stdin, sys.stdout)
-print(str(AllVotes) +" "+ str(TotalNumber) +" "+ str(VoteNumber) + " " + str(Candidates))
+#print(str(AllVotes) +" "+ str(TotalCases) +" "+ str(VoteNumber) + " " + str(Candidates))
