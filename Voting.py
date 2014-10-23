@@ -4,9 +4,9 @@ LineCounter = 1
 VoteNumber = 0
 Candidates = []
 AllVotes = []
-CaseCount = 0
+CaseCount = 1
 candic = {}
-
+loop = 0
 Flag = True
 
 
@@ -52,8 +52,20 @@ def voting_read(s):
 	global AllVotes
 	global Flag
 	global CaseCount
+	global loop
 	prev = " "
 	CurrentLine = s.readline()
+	if CurrentLine == "":
+		a = voting_eval()
+		
+		if type(a) == str:
+			return(a)
+		else:
+			b = []
+			for i in a:
+				b.append(candic[i])
+			return(b)
+		
 	if LineCounter == 3:
 		VoteNumber = int(CurrentLine)
 	elif LineCounter >= 4 and LineCounter < 4 + VoteNumber:
@@ -68,7 +80,7 @@ def voting_read(s):
 					CurrentVotes[-1] = int(prev + i)
 			prev = i
 		AllVotes += [CurrentVotes]
-	elif LineCounter >4 and CurrentLine == '\n':
+	elif (LineCounter >4 and CurrentLine == '\n'):
 		a = voting_eval()
 		
 		if type(a) == str:
@@ -80,7 +92,7 @@ def voting_read(s):
 			return(b)
 		
 	LineCounter += 1
-
+	loop +=1
 
 
 
@@ -145,6 +157,7 @@ def voting_eval():
 	
 		
 	while winner == False and Tie == False:
+		
 		CanCount = MakeCanCount()
 		for i in range (1, VoteNumber+1):
 			if len(Realcandic[i].ballist) > WinMark:
@@ -153,7 +166,6 @@ def voting_eval():
 				VoteNumber = 0
 				Candidates = []
 				AllVotes = []
-				CaseCount += 1
 				return Realcandic[i].cann
 			if len(Realcandic[i].ballist) == 0:
 				Realcandic[i].loser = True
@@ -162,7 +174,6 @@ def voting_eval():
 				VoteNumber = 0
 				Candidates = []
 				AllVotes = []
-				CaseCount += 1
 				tie = True
 				return CanCount.keys()
 					
@@ -170,64 +181,40 @@ def voting_eval():
 		for i in range (1, VoteNumber+1):
 			if min(CanCount.values()) == len(Realcandic[i].ballist):
 				for k in range (len(Realcandic[i].ballist)):
-					for p in range (VoteNumber):
+					for p in range (1, VoteNumber):
 						if Realcandic[Realcandic[i].ballist[k].baln[p]].loser == False:
 							Realcandic[Realcandic[i].ballist[k].baln[p]].ballist.append(Realcandic[i].ballist[k])
 							Realcandic[i].loser = True
-				else:
-					break
-				
-					
+						break
 		
-						
 				
-							
 			
-			
-				
-		
-	
-	
-	
-	
-	
-		
-	
-	
-	
-		
-	
-	
+
 def voting_print(ans, w):
+	global TotalCases
+	global CaseCount
 	if ans == None:
 		x=1
 	elif type(ans)== list:
 		for i in ans:
 			w.write(i + "\n")
 		w.write("\n")
+		CaseCount+=1
 	else:
 		w.write(ans + "\n" + "\n")
+		CaseCount+=1
 
 def voting_solve(r, w):
 	global TotalCases
 	global CaseCount
 	firstnum(r)
-	flager = False
-	counter = 0
-	while flager == False:
-		if CaseCount-3 < TotalCases:
-			counter +=1
-		if counter >= 3:
-			flager = True
-		u = voting_read(r)
-		voting_print(u, w)
-	
+	while CaseCount <= TotalCases:
 		
-	
-
-
-
-
+		u = voting_read(r)
+		
+		voting_print(u, w)
+		
+		
 
 
 voting_solve(sys.stdin, sys.stdout)
