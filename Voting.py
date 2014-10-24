@@ -1,3 +1,4 @@
+#David Schluckebier
 
 TotalCases = 0
 LineCounter = 1
@@ -6,12 +7,14 @@ Candidates = []
 AllVotes = []
 CaseCount = 1
 candic = {}
-loop = 0
 Flag = True
 
 
 
 class Ballot:
+	'''
+	adds atributes ballot number and ballot id
+	'''
 	def __init__(self, baln, balid):
 		self.baln = baln
 		self.balid = balid
@@ -22,6 +25,9 @@ class Ballot:
 	
 
 class Candidate:
+	'''
+	add atributes candidate number, candidate id, a list of their ballots, and if they are a loser
+	'''
 	def __init__(self, cann, canid):
 		self.cann = cann
 		self.canid = canid
@@ -32,6 +38,9 @@ class Candidate:
 		return len(self.ballist)
 		
 def firstnum(s):
+	'''
+	identifies how many cases will be run
+	'''
 	global LineCounter
 	global TotalCases
 	
@@ -44,6 +53,9 @@ def firstnum(s):
 
 
 def voting_read(s):
+	'''
+	reads all the lines that aren't the first line and puts them into the correct data store
+	'''
 	global LineCounter
 	global Candidates
 	global VoteNumber
@@ -97,15 +109,22 @@ def voting_read(s):
 
 
 def checkEqual(i):
-      try:
-         i = iter(i)
-         first = next(i)
-         return all(first == rest for rest in i)
-      except StopIteration:
-         return True
+	'''
+	checks if two values are equal
+	'''
+	try:
+		i = iter(i)
+		first = next(i)
+		return all(first == rest for rest in i)
+	except StopIteration:
+		return True
 
 
 def voting_eval():
+	'''
+	runs the Australian voting algorithm
+	uses global variables so I can't run it in unittests so I have bad coverage
+	'''
 	global LineCounter
 	global Candidates
 	global VoteNumber
@@ -191,6 +210,9 @@ def voting_eval():
 			
 
 def voting_print(ans, w):
+	'''
+	prints either a elements of a list on a newline or prints a string
+	'''
 	global TotalCases
 	global CaseCount
 	if ans == None:
@@ -205,6 +227,10 @@ def voting_print(ans, w):
 		CaseCount+=1
 
 def voting_solve(r, w):
+	'''
+	the caller to the rest of the program
+	has a read and a writer 
+	'''
 	global TotalCases
 	global CaseCount
 	firstnum(r)

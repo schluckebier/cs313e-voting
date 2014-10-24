@@ -1,0 +1,80 @@
+wrote Voting.html
+BLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Voting</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Voting</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/David/Documents/cs313e-voting/Voting.py">/Users/David/Documents/cs313e-voting/Voting.py</a></font></td></tr></table>
+    <p><tt>#David&nbsp;Schluckebier</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Voting.html#Ballot">Ballot</a>
+</font></dt><dt><font face="helvetica, arial"><a href="Voting.html#Candidate">Candidate</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Ballot">class <strong>Ballot</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>adds&nbsp;atributes&nbsp;ballot&nbsp;number&nbsp;and&nbsp;ballot&nbsp;id<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Ballot-__init__"><strong>__init__</strong></a>(self, baln, balid)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Candidate">class <strong>Candidate</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>add&nbsp;atributes&nbsp;candidate&nbsp;number,&nbsp;candidate&nbsp;id,&nbsp;a&nbsp;list&nbsp;of&nbsp;their&nbsp;ballots,&nbsp;and&nbsp;if&nbsp;they&nbsp;are&nbsp;a&nbsp;loser<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Candidate-__init__"><strong>__init__</strong></a>(self, cann, canid)</dt></dl>
+
+<dl><dt><a name="Candidate-totalvotes"><strong>totalvotes</strong></a>(self)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-checkEqual"><strong>checkEqual</strong></a>(i)</dt><dd><tt>checks&nbsp;if&nbsp;two&nbsp;values&nbsp;are&nbsp;equal</tt></dd></dl>
+ <dl><dt><a name="-firstnum"><strong>firstnum</strong></a>(s)</dt><dd><tt>identifies&nbsp;how&nbsp;many&nbsp;cases&nbsp;will&nbsp;be&nbsp;run</tt></dd></dl>
+ <dl><dt><a name="-voting_eval"><strong>voting_eval</strong></a>()</dt><dd><tt>runs&nbsp;the&nbsp;Australian&nbsp;voting&nbsp;algorithm<br>
+uses&nbsp;global&nbsp;variables&nbsp;so&nbsp;I&nbsp;can't&nbsp;run&nbsp;it&nbsp;in&nbsp;unittests&nbsp;so&nbsp;I&nbsp;have&nbsp;bad&nbsp;coverage</tt></dd></dl>
+ <dl><dt><a name="-voting_print"><strong>voting_print</strong></a>(ans, w)</dt><dd><tt>prints&nbsp;either&nbsp;a&nbsp;elements&nbsp;of&nbsp;a&nbsp;list&nbsp;on&nbsp;a&nbsp;newline&nbsp;or&nbsp;prints&nbsp;a&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-voting_read"><strong>voting_read</strong></a>(s)</dt><dd><tt>reads&nbsp;all&nbsp;the&nbsp;lines&nbsp;that&nbsp;aren't&nbsp;the&nbsp;first&nbsp;line&nbsp;and&nbsp;puts&nbsp;them&nbsp;into&nbsp;the&nbsp;correct&nbsp;data&nbsp;store</tt></dd></dl>
+ <dl><dt><a name="-voting_solve"><strong>voting_solve</strong></a>(r, w)</dt><dd><tt>the&nbsp;caller&nbsp;to&nbsp;the&nbsp;rest&nbsp;of&nbsp;the&nbsp;program<br>
+has&nbsp;a&nbsp;read&nbsp;and&nbsp;a&nbsp;writer</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>AllVotes</strong> = []<br>
+<strong>Candidates</strong> = []<br>
+<strong>CaseCount</strong> = 1<br>
+<strong>Flag</strong> = True<br>
+<strong>LineCounter</strong> = 1<br>
+<strong>TotalCases</strong> = 0<br>
+<strong>VoteNumber</strong> = 0<br>
+<strong>candic</strong> = {}</td></tr></table>
+</body></html>
