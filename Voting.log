@@ -1,0 +1,53 @@
+commit 1cfeb91bd9b0044faedfda1e6d0271d1fafa39d0
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Thu Oct 23 19:50:21 2014 -0500
+
+    Delete TestVoting.py~
+
+commit be23a3994436b7ac7765a33c3a9f44d4f75f79e3
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Thu Oct 23 19:45:45 2014 -0500
+
+    Added pydoc fixes #7
+
+commit 639677a5f22dc283685b15fb9d1045afa3531f07
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Thu Oct 23 19:26:08 2014 -0500
+
+    added tests fixes #1
+
+commit f9a3a2a45f53d30d3f388956d2f00d6af1985e36
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Thu Oct 23 18:56:17 2014 -0500
+
+    Added 1000 line fixes #3
+
+commit 0873bebbafaed09e990477473aaa39e356459594
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Thu Oct 23 18:12:19 2014 -0500
+
+    Wrote my run voting file closes #4
+
+commit b6cad291f8d164c2922727002d00dae50355be22
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Thu Oct 23 18:05:11 2014 -0500
+
+    Working run file fixes #2
+
+commit 45996bea4fa94478378c8fa3c822779ff0545bd7
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Thu Oct 23 16:47:10 2014 -0500
+
+    kind of working
+
+commit 8fdc7f6f433a500b320f813f32c45f7e044ba671
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Wed Oct 22 20:22:01 2014 -0500
+
+    changes to classes
+
+commit 2874479c63d5529fa40a32d142913a22625ef4d2
+Author: schluckebier <schluckebierd@gmail.com>
+Date:   Wed Oct 22 16:43:08 2014 -0500
+
+    Correct input
