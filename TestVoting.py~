@@ -89,15 +89,15 @@ class TestVoting (TestCase) :
 
     def test_print_11 (self) :
     	w = StringIO()
-    	l = 'Testing'
+    	l = 'Hello'
     	voting_print(l, w)
-    	self.assertEqual(w.getvalue(), 'Testing\n\n')
+    	self.assertEqual(w.getvalue(), 'Hello\n\n')
 
     def test_print_12 (self) :
     	w = StringIO()
-    	l = 'Does this work?'
+    	l = 'Hello'
     	voting_print(l, w)
-    	self.assertEqual(w.getvalue(), 'Does this work?\n\n')
+    	self.assertEqual(w.getvalue(), 'Hello\n\n')
     	
 
     
